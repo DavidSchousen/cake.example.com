@@ -17,6 +17,8 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
+
+
 /**
  * Application Controller
  *
@@ -37,15 +39,23 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function initialize()
+
+    protected $session;
+
+       
+        public function initialize()
     {
         parent::initialize();
 
-        $this->loadComponent('RequestHandler', [
-            'enableBeforeRedirect' => false,
-        ]);
-        $this->loadComponent('Flash');
+        // Load the AUTH component
+        $this->loadComponent('Auth');
 
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+        $this->session = $this->getRequest()->getSession();
+
+        // Deny unauthorized access by default
+        $this->Auth->deny();
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html

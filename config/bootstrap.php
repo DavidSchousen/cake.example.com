@@ -202,3 +202,7 @@ Type::build('timestamp')
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
 Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
+
+//configure facebook
+//Configure::write('OAuth.providers.facebook.options.clientId', 'YOUR APP ID');
+//Configure::write('OAuth.providers.facebook.options.clientSecret', 'YOUR APP SECRET');
